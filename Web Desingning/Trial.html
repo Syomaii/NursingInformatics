@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--<link rel="stylesheet" href="style.css">-->
+    <title>Nursing</title>
+</head>
+<body>
+  <main class="main">
+    <ul>
+        <li class="active"><a href="#first">Tab 1</a></li>
+        <li><a href="#second">Tab 2</a></li>
+        <li><a href="#third">Tab 3</a></li>
+        <li><a href="#fourth">Tab 4</a></li>
+        <li><a href="#fifth">Tab 5</a></li>
+    </ul>
+    <div id="first">
+        <h2>first tab</h2>
+        <p> Hello asfdsafgadsfsadasdasdasdasdasd</p>
+    </div>
+    <div id="second">
+        <h2>second tab</h2>
+        <p>Hello asfdsafgadsfsadasdasdasdasdasd</p>
+    </div>
+    <div id="third">
+        <h2>third tab</h2>
+        <p>Hello asfdsafgadsfsadasdasdasdasdasd</p>
+    </div>
+    <div id="fourth">
+        <h2>fourth tab</h2>
+        <p>Hello asfdsafgadsfsadasdasdasdasdasd</p>
+    </div>
+    <div id="fifth">
+        <h2>fifth tab</h2>
+        <p>Hello asfdsafgadsfsadasdasdasdasdasd</p>
+    </div>
+  </main>
+    <script>
+        
+
+window.addEventListener('keydown', function(event) {
+  if (event.keyCode === 32) { // 32 is the keycode for space bar
+    event.preventDefault(); // prevent default space bar behavior (scrolling down)
+    window.scrollBy(0, window.innerHeight); // scroll by the height of the viewport
+  }
+});
+    </script>
+</body>
+</html>
