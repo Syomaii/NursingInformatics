@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="InformaticsCSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <img class="logo" src="logo.png" alt="logo">
+        <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Articles">Articles</a></li>
+            <li><a href="#Research">Research</a></li>
+            <li><a href="#Aboutus">About us</a></li>
+        </ul>
+    </div>
+    <div id="Home" class="container">
+        <a href="#Articles" class="scroll-link"><img src="Home/tellmemore.png" alt="" class="my-image"></a>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AdNdF3z2TUw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>          
+    </div>
+
+    <div id="Articles" class="container">
+        
+    </div>
+    
+    <div id="Research" class="container">
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/6PXKjx4FSRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="image-container">
+          <div>
+            <a class="first-najera"><img src="Research/Najera.png" alt="" class="najera-image" data-image="najera"></a>
+          </div>
+          <div>
+            <a class="first-deypalan"><img src="Research/Deypalan.png" alt="" class="deypalan-image" data-image="deypalan"></a>
+          </div>
+          <div>
+            <a class="first-genon"><img src="Research/Genon.png" alt="" class="genon-image" data-image="genon"></a>
+          </div>
+          <div>
+            <a class="first-manso"><img src="Research/Manso.png" alt="" class="manso-image" data-image="manso"></a>
+          </div>
+          <div>
+            <a class="first-corias"><img src="Research/Corias.png" alt="" class="corias-image" data-image="corias"></a>
+          </div>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-modal">
+          <img src="" alt="">
+          <button class="close-btn">&times;</button>
+        </div>
+      </div>
+
+    <div id="Aboutus" class="container">
+        <div class="photo-container">
+            <img src="AboutUs/Apora.png" alt="" class="first">
+            <img src="AboutUs/Ceniza.png" alt="" class="second">
+            <img src="AboutUs/Cobarde.png" alt="" class="third">
+            <img src="AboutUs/Deypalan.png" alt="" class="fourth">
+            <img src="AboutUs/Genon.png" alt="" class="fifth">
+            <img src="AboutUs/Gerolaga.png" alt="" class="sixth">
+            <img src="AboutUs/Labadia.png" alt="" class="seventh">
+            <img src="AboutUs/Navales.png" alt="" class="eigth">
+            <img src="AboutUs/Radaza.png" alt="" class="ninth">
+            <img src="AboutUs/Real.png" alt="" class="tenth">
+        </div>
+    </div>
+
+    <script>
+        //Collapsing Navbar
+        
+
+        //This is for the scrolling animation when clicked
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+              // remove the "active" class from all navbar links
+            document.querySelectorAll('.navbar a').forEach(link => {
+              link.classList.remove('active');
+            });
+
+              // add the "active" class to the clicked navbar link
+              this.classList.add('active');
+
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+              });
+          });
+        });
+
+        //tell me more
+        const scrollLinks = document.querySelectorAll('.scroll-link');
+
+scrollLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    const topOffset = targetElement.offsetTop;
+
+    window.scroll({
+      top: topOffset,
+      behavior: 'smooth'
+    });
+  });
+});
+
+//research buttons
+const images = document.querySelectorAll('.najera-image, .deypalan-image, .genon-image, .manso-image, .corias-image');
+const modal = document.querySelector('.gallery-modal');
+const modalImg = modal.querySelector('img');
+const closeBtn = modal.querySelector('.close-btn');
+const overlay = document.querySelector('.gallery-overlay');
+
+// Create an array of image URLs
+const imageUrls = {
+  'najera': 'Research/Najera2.png',
+  'deypalan': 'Research/Deypalan2.png',
+  'genon': 'Research/Genon2.png',
+  'manso': 'Research/Manso2.png',
+  'corias': 'Research/Corias2.png'
+};
+
+images.forEach(image => {
+  image.addEventListener('click', () => {
+    // Get the data-image attribute value from the clicked image
+    const imageName = image.getAttribute('data-image');
+
+    // Get the corresponding image URL from the array
+    const imageUrl = imageUrls[imageName];
+
+    modalImg.setAttribute('src', imageUrl);
+    modal.style.opacity = '1';
+    modal.style.visibility = 'visible';
+    modalImg.style.transform = 'scale(1)';
+    overlay.style.opacity = '1';
+    overlay.style.visibility = 'visible';
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.style.opacity = '0';
+  modal.style.visibility = 'hidden';
+  modalImg.style.transform = 'scale(0)';
+  overlay.style.opacity = '0';
+  overlay.style.visibility = 'hidden';
+  document.body.style.overflow = 'visible';
+});
+
+overlay.addEventListener('click', () => {
+  modal.style.opacity = '0';
+  modal.style.visibility = 'hidden';
+  modalImg.style.transform = 'scale(0)';
+  overlay.style.opacity = '0';
+  overlay.style.visibility = 'hidden';
+  document.body.style.overflow = 'visible';
+});
+    </script>
+</body>
+</html>
